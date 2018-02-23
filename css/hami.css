@@ -1,0 +1,680 @@
+/*头部样式*/
+
+.hami-head {
+	background: #D55E40 !important;
+	box-shadow: none !important;
+	padding-top: 0px;
+}
+.hami-head h1,
+.hami-head h2,
+.hami-head h3,
+.hami-head span,
+.hami-head input,
+.hami-head a {
+	color: #FFF !important;
+}
+/*用来控制投票和历史模块*/
+
+.hami-segmented a {
+	padding-top: 20px;
+	background-color: #D55E40 !important;
+	color: #FFF !important;
+}
+/*图表绘制 一律高度采用200px*/
+
+.chart {
+	width: 100%;
+	height: 200px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #FFF !important;
+}
+/*风格第一种*/
+
+.hami-item-box {
+	list-style: none;
+	width: 100%;
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+}
+/*hami-item-box li下的头部  尽量减少生成的代码*/
+
+.hami-item-box span {
+	width: 100%;
+	display: inline-block;
+	height: 30px;
+	color: #333;
+	padding: 5px;
+	background-color: #efeff4;
+	font-size: 13px;
+}
+.hami-item-box span font:first-child {
+	margin-right: 5px;
+}
+.hami-item-box span font {
+	float: right;
+	font-size: 12px;
+	color: #D55E40;
+	margin-right: 20px;
+}
+/*用表格来控制*/
+
+.hami-item-box table {
+	width: 100%;
+	height: 70px;
+	table-layout: fixed;
+	/*加上这个属性会自动去控制宽度*/
+}
+.hami-item-box table td {
+	line-height: 35px;
+	text-align: center;
+	color: #666;
+	font-size: 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.hami-item-box table th {
+	width: 80px;
+}
+.hami-item-box img {
+	width: 70px !important;
+	height: 70px;
+	margin-top: 3px;
+	margin-left: 3px;
+	padding: 5px;
+	border-radius: 40px;
+	display: inline-block;
+}
+.hami-up,
+.hami-up td,
+.hami-up p,
+.hami-up font {
+	color: #dd524d !important;
+}
+.hami-down,
+.hami-down td,
+.hami-down p,
+.hami-down font {
+	color: #4cd964 !important;
+}
+/*风格第一种结束*/
+/*风格第二种开始，  暂时只写了四个*/
+
+.hami-view {
+	width: 100%;
+	height: auto;
+}
+.hami-view h4 {
+	font-size: 16px;
+	padding: 10px 0px;
+	text-indent: 14px;
+}
+.hami-view:nth-child(1) h4 {
+	border-bottom: rgba(220, 70, 20, 1) 1px solid;
+	border-left: 15px solid rgba(220, 70, 20, 1);
+	color: rgba(220, 70, 20, 1);
+}
+.hami-view:nth-child(2) h4 {
+	border-bottom: #D35400 1px solid;
+	border-left: 15px solid #D35400;
+	color: #D35400;
+}
+.hami-view:nth-child(3) h4 {
+	border-bottom: #E77E22 1px solid;
+	border-left: 15px solid #E77E22;
+	color: #E77E22;
+}
+.hami-view:nth-child(4) h4 {
+	border-bottom: #F39D12 1px solid;
+	border-left: 15px solid #F39D12;
+	color: #F39D12;
+}
+/*风格第二种结束*/
+/* 靠前面的收益板 */
+
+.hami-board {
+	/*margin-top:20%;*/
+	
+	background: url(../img/icon/icon_mbag.png) no-repeat;
+	background-position: center;
+	width: 100%;
+	height: 220px;
+	/*border-bottom: #efeff4  solid 1px;*/
+}
+.hami-board h1 {
+	font-size: 50px;
+	width: 100%;
+	text-align: center;
+	padding-top: 110px;
+	color: #FFF;
+}
+.hami-earing-board {
+	/*padding-top:44px;*/
+	
+	width: 100%;
+	height: 150px;
+	color: #FFF !important;
+}
+.hami-earing-board div:nth-child(1) {
+	width: 30%;
+	height: 100%;
+}
+.hami-earing-board div:nth-child(1) img {
+	margin-top: 45px;
+	margin-left: calc(50% - 30px);
+	border-radius: 40px;
+	width: 60px;
+	height: 60px;
+}
+.hami-earing-board div:nth-child(1) font {
+	color: #FFF;
+	font-size: 15px;
+	margin-left: 10%;
+	margin-top: 5px;
+	font-weight: normal;
+	width: 80%;
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.hami-earing-board div:nth-child(2) {
+	position: absolute;
+	left: 30%;
+	top: 0%;
+	width: 70%;
+	height: 100%;
+	text-align: center;
+}
+.hami-earing-board div:nth-child(2) font {
+	line-height: 150px;
+	width: auto;
+	font-size: 20px;
+	font-weight: bold;
+}
+.hami-board-up {
+	background-color: #D55E40;
+}
+.hami-board-down {
+	background-color: #4cd964;
+}
+.hami-board-other {
+	background-color: #F39D12;
+}
+/*醒目的内容（单行）和标题块*/
+
+.hami-title-content {
+	width: calc(50% - 10px);
+	height: 100px;
+	float: left;
+	margin: 5px;
+}
+.hami-title-content span {
+	width: 100%;
+	display: block;
+	font-size: 14px;
+	padding: 5px;
+	color: #FFF;
+}
+.hami-title-content font {
+	display: block;
+	text-align: center;
+	font-size: 25px;
+	line-height: 69px;
+	color: #FFF;
+}
+/*标准的内容和标题块*/
+
+.hami-title-content-ul {
+	width: 100%;
+	height: auto;
+	list-style: none;
+	padding: 0px;
+	margin-top: 0px !important;
+}
+.hami-title-content-ul li {
+	width: 100%;
+	height: auto;
+	padding: 0px;
+	-webkit-tap-highlight-color: rgba(100, 100, 100, .1);
+}
+.hami-title-content-ul li span {
+	display: block;
+	font-size: 16px;
+	padding: 5px 10px;
+	color: #666;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.hami-title-content-ul li span label {
+	float: right;
+	margin-right: 10px;
+	color: #999;
+}
+.hami-title-content-ul li font {
+	display: inline-block;
+	width: 100%;
+	line-height: 29px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-indent: 1em;
+}
+/*显示内容区分块*/
+.hami-alert-mark {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: #FAFAFA;
+	color: #999;
+	padding: 8px 5px;
+}
+.hami-alert-mark-normal {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: #FFF;
+	color: #999;
+	padding: 8px 5px;
+	text-justify: inter-ideograph;
+}
+.hami-font-indent {
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+	text-indent: 2em;
+	word-break: break-all;
+}
+.hami-page-content{
+	display: block;
+	height: auto;
+	padding-bottom: 20px;
+}
+.hami-page-content p{
+	text-indent: 2em;
+	padding: 10px 10px;
+	word-break: break-all;
+
+}
+/*loading*/
+.hami-loading {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	top: calc(50% - 25px);
+	left: calc(50% - 25px);
+	background: url(../img/icon/iconfont-loading.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	animation: hamiloading 3000ms;
+	-webkit-animation: hamiloading 3000ms;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes hamiloading {
+	from {
+		-webkit-transform: rotateZ(0deg);
+	}
+	to {
+		-webkit-transform: rotateZ(360deg);
+	}
+}
+@keyframes hamiloading {
+	from {
+		transform: rotateZ(0deg);
+	}
+	to {
+		transform: rotateZ(360deg);
+	}
+}
+.hami-btn-small {
+	padding: 10px 20px 10px 20px;
+}
+/*垂直居中的容器*/
+.hami-vertical-center-container {
+	position: fixed;
+	width: 100%;
+	margin-top: 44px;
+	height: calc(100% - 94px);
+	-webkit-align-items: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: flex;
+}
+/*提醒没有的块*/
+.hami-nothing{
+	width: 100%;
+	height: 100px;
+	-webkit-align-items: center;
+	align-items: center;
+	display: -webkit-flex;
+	display: flex;
+}
+.hami-nothing font{
+	width: 100%;
+	text-align: center;
+	color: #666;
+	padding:30px 5px;
+}
+.hami-nothing div{
+	width: 50px;
+	height: 50px;
+	margin-left: calc(50% - 25px);
+	background: url(../img/icon/iconfont-loading.png);
+	background-size: contain; 
+	background-repeat: no-repeat;
+	animation: hamiloading 3000ms;
+	-webkit-animation: hamiloading 3000ms;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+.hami-page-title{
+	padding:10px;
+	line-height: 30px;
+	color: rgba(0,0,0,.8);
+}
+.hami-page-label{
+	padding: 10px;
+	display: inline-block;
+	height: auto;
+	/*color: #666666;*/
+}
+.hami-page-label label{
+	padding: 3px 5px;
+	display: inline-block;
+	margin-left:5px;
+	font-size: 14px;
+	background: #FFCC33;
+	border-radius: 8px;
+	color: #FFF;
+}
+.hami-page-img{
+	width: 100%;
+	height: auto;
+}
+.hami-page-img img{
+	width: 100%;
+	height: auto;
+}
+.hami-page-other-info{
+	display: block;
+	height: auto;
+}
+.hami-page-from{
+	color: rgba(0,0,0,.8);
+	margin: 10px;
+	display: inline-block;
+}
+.hami-page-time{
+	color: #999999;
+	margin: 10px;
+	display: inline-block;
+}
+/*修改mui*/
+.mui-table-view-cell:after {
+	left: 0px;
+}
+.mui-navigate-right:after {
+	font-size: 25px;
+}
+.mui-table-view {
+	background: none;
+}
+/**
+ * 正在集资模块
+ */
+
+.hami-view-l {
+	width: 100%;
+	height: auto;
+}
+.hami-updown {
+	background: #D55E40;
+	height: 200px;
+}
+.hami-updown-title {
+	float: left;
+	margin: 5% 15px 30px;
+	color: #fff;
+}
+.hami-updown-value {
+	position: absolute;
+	top: 20px;
+	left: 37%;
+	float: left;
+	width: 100%;
+	font-size: 30px;
+	margin: 20px;
+	margin-top: 40px;
+	color: rgb(126, 243, 24);
+}
+.hami-pool-show {
+	height: 420px;
+	background-color: #FFFCDF;
+	width: 100%;
+}
+.hami-pool-show a {
+	float: left;
+	width: 45%;
+	height: 40px;
+	display: block;
+	top: 10px;
+	left: 5%;
+	line-height: 10px;
+}
+.poolfont {
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	top: 350px;
+	text-align: center;
+	color: #0CC;
+}
+#pool {
+	position: relative;
+	background: rgba(213, 94, 65, .2);
+	border: #D55E40 2px solid;
+	left: calc(25% - 4px);
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.chart-raising {
+	width: 100%;
+	height: 200px;
+	padding: 0px;
+	background-color: #D55E40 !important;
+	color: #FFFFFF !important;
+}
+.pool_container {
+	width: 100%;
+	height: auto;
+}
+.pool_container .pool_rate {
+	position: absolute;
+	left: 0;
+	color: #FFF;
+	width: 100%;
+	top: 50%;
+	text-align: center;
+	font-size: 24px;
+}
+.poll_raising {
+	top: 30px;
+	left: 20px;
+	text-align: center;
+}
+.poll_raising p {
+	line-height: 12px;
+}
+.poll_raising p:nth-child(2),
+.poll_raising p:nth-child(4) {
+	font-size: 20px;
+}
+.collectDetail ul {
+	margin-top: 0px !important;
+}
+/*即将揭晓*/
+
+.publishing-box {
+	margin: 0px;
+	width: 100%;
+	height: 201px;
+	padding: 0px;
+	top: 40%;
+	left: 40%;
+	background-color: #D55E40 !important;
+	color: #FFFFFF !important;
+}
+.luckNum{
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 20px;
+	color: #F9F9F9;
+}
+.field-contain {
+	float: left;
+}
+.field-contain input[type='text'] {
+	width: 40px;
+	height: 30px;
+	padding: 5px 0;
+	float: none;
+	text-align: center;
+}
+.rang {
+	float: right;
+}
+.rang input[type=range] {
+	position: absolute !important;
+	width: 140px !important;
+	top: -40px;
+	left: 130px;
+}
+.mui-tooltip {
+	display: none!important;
+}
+.hami-publishing-num {
+	line-height: 120px;
+	text-align: center;
+}
+.publishing-box h4 {
+	padding-top: 10px;
+	padding-left: 7px;
+	margin-top: 0px;
+}
+.publishing-box h3 a {
+	color: #F7F7F7;
+}
+/*正在收益*/
+
+.hami-updown-limit {
+	clear: both;
+	position: relative;
+}
+.hami-updown-limit li a {
+	color: #FFCC33;
+	font-family: "微软雅黑";
+	display: block;
+}
+.hami-updown-limit li a:nth-child(2) {
+	color: #fff;
+	font-family: "微软雅黑";
+	display: block;
+	font-size: 11px;
+}
+.hami-updown-limit li{
+	margin: 0.4px;
+	float: left;
+	width: calc(50% - 0.8px);
+	height: 15%;
+	background-color: rgba(236, 228, 228, 0.28);
+	line-height: 31px;
+	display: inline;
+	text-align: center;
+	border-radius: 4px;
+	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-transition: all .1s ease;
+	-moz-transition: all .1s ease;
+	-ms-transition: all .1s ease;
+	-o-transition: all .1s ease;
+	transition: all .1s ease;
+}
+.hami-btn-active li:active{
+	-webkit-box-shadow: 0px 3px 0px rgba(219, 31, 5, 1), 0px 3px 6px rgba(0, 0, 0, .9);
+	-moz-box-shadow: 0px 3px 0px rgba(219, 31, 5, 1), 0px 3px 6px rgba(0, 0, 0, .9);
+	box-shadow: 0px 3px 0px rgba(224, 169, 144, 1), 0px 3px 6px rgba(0, 0, 0, .9);
+	position: relative;
+}
+.hami-earning-num {
+	line-height: 82px;
+	text-align: center;
+}
+.inp-earnings-view li{
+	padding: 0px;
+}
+.chart-earning {
+	width: 100%;
+	height: 300px;
+	padding: 0px;
+	color: #FFFFFF !important;
+}
+.hami-earningDetail-ul{
+	margin-top: 40px;
+	width: 100%;
+	height: auto;
+}
+.hami-earningDetail-ul li{
+	margin: 0.4px;
+	float: left;
+	width: calc(33% - 0.3px);
+	height: 15%;
+	background-color: rgba(236, 228, 228, 0.28);
+	line-height: 31px;
+	display: inline;
+	text-align: center;
+	border-radius: 4px;
+	border-bottom: 1px solid #E2DADA;
+}
+.hami-earningDetail-ul li a:nth-child(1) {
+	color: #757070;
+	font-family:"courier new"
+	display: block;
+	font-size: 14px;
+}
+.hami-earningDetail-ul li a:nth-child(2) {
+	font-family: "微软雅黑";
+	display: block;
+	font-size: 22px;
+	font-weight: bolder;
+}
+.hami-popover{
+	width: calc(100% - 10px) !important;
+	margin: 0px !important;
+}
+.hami-pay li h4:nth-child(2){
+	display: inline-block;
+	margin-left: calc(36% - 0.3px);
+}
+.hami-pay li h5:nth-child(1){
+	float: left; display: inline-block;
+}
+.hami-pay li h5:nth-child(2){
+	float: right; display: inline;
+}
+#pay-finish{
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+#pay-finish a{
+	width: 90%;
+	margin-left: 20px;
+	height: 35px;
+	line-height: 5px;
+}

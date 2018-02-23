@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>欢迎使用</title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				height: 100%;
+			}
+			
+			body {
+				/*background: radial-gradient(50% 30%, ellipse, #F2F6FA, #8FB6DE);
+				background: -webkit-radial-gradient(50% 30%, ellipse, #F2F6FA, #8FB6DE);*/
+			}
+			
+			.animals-hami {
+				width: 20px !important;
+				height: 20px !important;
+				background-image: url(img/icon/iconfont-gengxin.png);
+				background-size: 20px;
+				animation: play 1s steps(10) infinite;
+			}
+			
+			@keyframes play {
+				0% {
+					background-position: 0px 0;
+				}
+				100% {
+					background-position: -10px 0;
+				}
+			}
+			.mui-slider .mui-slider-group {
+				height: 100%;
+				width: 100%;
+			}
+			
+			.mui-slider-content {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.button-row {
+				position: fixed;
+				bottom: 20px;
+				width: 100%;
+				padding: 8px 30px;
+			}
+			
+			.button-row button {
+				padding-top: 8px;
+				padding-bottom: 8px;
+			}
+			
+			.slider-item {
+				font-size: 20px;
+				text-align: center;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.slider-item img {
+				width: 100%;
+				height: 100%;
+			}
+			.hami-button{
+				font-family:'微软雅黑';
+				background:rgba(217, 76, 76, 0.64) ;
+				border: rgba(217,76,76,0.16);
+				color: rgba(253, 223, 223, 0.93);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-slider mui-slider-content">
+			<div class="mui-slider-group">
+				<div class="mui-slider-item">
+					<div class="slider-item"><img src="img/welcome/1.jpg" /></div>
+					<div class="animals-hami slider-item"></div>
+				</div>
+				<div class="mui-slider-item">
+					<div class="slider-item"><img src="img/welcome/2.jpg" /></div>
+				</div>
+				<div class="mui-slider-item" id="welcome2">
+					<div class="slider-item"><img src="img/welcome/3.jpg" /></div>
+					<div class="button-row">
+						<a type="button" id="welcome" class="mui-btn mui-btn-positive mui-btn-block hami-button">我来试试</a>
+					</div>
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+		<script type="text/javascript" charset="UTF-8">
+			var preHome;
+			mui.plusReady(function() {
+				preHome = mui.preload({
+					url: "home.html",
+					id: "home"
+				});
+			});
+			document.getElementById('welcome2').addEventListener("swipeleft", function() {
+				plus.storage.setItem("FirstTimeFlag", plus.runtime.version);
+				preHome.show("zoom-fade-out", 500);
+			});
+			document.getElementById('welcome').addEventListener('tap', function() {
+				plus.storage.setItem("FirstTimeFlag", plus.runtime.version);
+				preHome.show("zoom-fade-out", 500);
+			});
+			var first = null;
+			mui.back = function() {
+				//首次按键，提示‘再按一次退出应用’
+				if (!first) {
+					first = new Date().getTime();
+					plus.nativeUI.toast("再按一次退出", {
+						duration: "1000"
+					});
+					setTimeout(function() {
+						first = null;
+					}, 1000);
+				} else {
+					if (new Date().getTime() - first < 1000) {
+						plus.runtime.quit();
+					}
+				}
+			};
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/mui.js"></script>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/hami.css" />
+		<style>
+			.mui-table-view-cell img {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				padding: 0px;
+				margin-top: 3px;
+				border-radius: 5px;
+			}
+			.mui-table-view-cell font {
+				position: absolute;
+				color: #666;
+				font-size: 16px;
+				margin-top: 5px;
+				margin-left: 15px
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="user_seting_back"></a>
+			<h1 class="mui-title">设置</h1>
+		</header>
+
+		<div class="mui-scroll-wrapper" style="margin-top:44px;height: calc(100% - 44px);">
+			<div class="mui-scroll" id="user_seting_path">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate">
+							<img src="../img/icon/iconfont-songxiu.png" />
+							<font>消息推送</font>
+							<div class="mui-switch mui-active" id="user_seting_mpush">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate">
+							<img src="../img/icon/iconfont-wutu.png" />
+							<font>无图模式</font>
+							<div class="mui-switch" id="user_seting_nomap">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" data-href="user_seting_update">
+						<a class="mui-navigate-" id="user_my_message">
+							<img src="../img/icon/iconfont-gengxin.png" />
+							<font>更新检测</font>
+							<span class="mui-badge mui-badge-red" style="right: 15px !important;">V1.0.0</span>
+						</a>
+					</li>
+				</ul>
+
+				<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+					<li class="mui-table-view-cell" data-href="user_feedback.html">
+						<a class="mui-navigate-right">
+							<img src="../img/icon/iconfont-yijianfankui.png" />
+							<font>意见反馈</font>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" data-href="user_abus.html">
+						<a class="mui-navigate-right">
+							<img src="../img/icon/iconfont-guanyuwomen.png" />
+							<font>关于微投</font>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" data-href="user_seting_share">
+						<a class="mui-navigate">
+							<img src="../img/icon/iconfont-iconfenxianggei.png" />
+							<font>分享给好友</font>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/user.seting.js" ></script>
+</html>

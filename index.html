@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>启动</title>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+//				preloadPages:[
+//					{url:'ui/inp_collecting.html',id:'inp_collecting'},
+//					{url:'ui/inp_earnings.html',id:'inp_earnings'},
+//					{url:'ui/inp_publishing.html',id:'inp_publishing'}
+//				]
+			});
+		</script>
+	</head>
+
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			mui.plusReady(function() {
+				/* 检测当前版本是否首次使用，首次使用转Welcome，非首次使用转Home
+				 * 目标页面加载完成时关闭启动页
+				 */
+				var runtimeVersion = plus.runtime.version;
+				var storageVersion = plus.storage.getItem("FirstTimeFlag");
+				var tagetUrl, tagetId;
+				if (runtimeVersion == storageVersion) {
+					tagetUrl = "home.html";
+					tagetId = "home";
+				} else {
+					tagetUrl = "welcome.html";
+					tagetId = "welcome";
+				}
+				//关于
+				var tagetWebView = mui.preload({
+					url: tagetUrl,
+					id: tagetId
+				});
+				
+				//动画时间定义的长一点，以便页面加载好了再关闭启动界面
+				tagetWebView.show("fade-in", 2000, function() {
+					plus.navigator.closeSplashscreen();
+				});
+			});
+		</script>
+
+	</body>
+
+</html>
