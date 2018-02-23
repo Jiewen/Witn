@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/hami.css" rel="stylesheet" />
+	</head>
+
+	<body style="height: 100%;">
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">头像截取</h1>
+			<a class="mui-pull-right" style="line-height: 44px;" id="head_cutover">上传</a>
+		</header>
+		<div class="hami-vertical-center-container" style="height: calc(100% - 44px);background: #000;">
+			<canvas id="head_container" style="padding: 20px;">
+			</canvas>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../js/mui.js"></script>
+	<script type="text/javascript" src="js/user.head.img.js"></script>
+	<script>
+		var uploadSuccess = false; //上传是否成功
+		mui.init({
+			beforeback: function() {
+				if (uploadSuccess) {
+					uploadSuccess = false;
+					var reg_detail = plus.webview.getWebviewById('reg_detail');
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+					mui.fire(reg_detail, 'refresh');
+					var user_as = plus.webview.getWebviewById('ui/user_as.html');
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+					mui.fire(user_as, 'refresh');
+				}
+				return true;
+			}
+		});
+		document.addEventListener("plusready", onPlusReady, false);
+		var head_cutover = document.getElementById("head_cutover");
+		var cutImg = new CutImg();
+		cutImg.init("head_container", "../img/temp.gif");
+		function onPlusReady() {
+			var self = plus.webview.currentWebview();
+			var path = self.path;
+			cutImg.init("head_container", path);
+		}
+		head_cutover.addEventListener("tap", function() {
+			cutImg.previewImg(); //先预览
+			plus.nativeUI.showWaiting('请稍后，正在上传头像...');
+			var sendInfo = cutImg.rebackImg().substring(22); //得到字符集
+			mui.ajax(witnUrl + 'loginAction_uploadHeadUrl.action', {
+				data: {
+					sendInfo: sendInfo
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'post', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				success: function(data) {
+					plus.nativeUI.closeWaiting();
+					if (data.result == "failure") {
+						mui.toast("未知原因，上传失败");
+					} else {
+						mui.toast("上传成功");
+						uploadSuccess = true;
+						plus.storage.setItem("headUrl", data.result);
+						mui.back();
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+					plus.nativeUI.closeWaiting();
+					alert("网络异常，请检查您的网络连接");
+				}
+			})
+		});
+	</script>
+
+</html>

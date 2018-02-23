@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			.mui-table-view-cell {
+				padding: 4px 4px !important;
+			}
+			.mui-table-view-cell img {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				margin-top: 3px;
+				margin-left: 5px;
+				border-radius: 50px;
+				border: 1px #D55E40 solid;
+			}
+			.letter-content {
+				display: inline-block;
+				width: calc(100% - 65px);
+				margin-top: 3px;
+				height: 55px;
+				padding: 0px;
+			}
+			.letter-content font:nth-child(1) {
+				color: #000;
+				padding: 0px;
+			}
+			.letter-content font:nth-child(2) {
+				right: 10px;
+				font-size: 12px;
+			}
+			.letter-content font:nth-child(3) {
+				width: 70%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				margin-top: 34px;
+				font-size: 16px;
+			}
+			.mui-table-view-cell font {
+				position: absolute;
+				color: #666;
+				font-size: 16px;
+				margin-top: 8px;
+				margin-left: 10px;
+			}
+			.mui-badge {
+				top: 52px !important;
+				right: 10px !important;
+			}
+		</style>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/hami.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的好友</h1>
+		</header>
+
+		<!--<div class="hami-loading">
+		</div> -->
+
+		<div class="mui-scroll-wrapper" style="margin-top:44px;height: calc(100% - 44px);">
+			<div class="mui-scroll">
+				<ul class="mui-table-view" id="user_pl_list">
+					<li class="mui-table-view-cell">
+						<img src="../img/icon/mine_title_bg.jpg" />
+						<div class="letter-content">
+							<font>J1en</font><font>19:39</font>
+							<font>你好啊，在吗</font>
+						</div>
+						<span class="mui-badge mui-badge-danger">1</span>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="../img/login_reg_bg.jpg" />
+						<div class="letter-content">
+							<font>孙兰东</font><font>19:39</font>
+							<font>你们已经成为好友，现在可以聊天了啦啦啦啦啦</font>
+						</div>
+						<span class="mui-badge mui-badge-danger">1</span>
+					</li>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.js"></script>
+	<script type="text/javascript" src="js/user.private.letter.js"></script>
+	<script>
+		 //TODO  任务未完成
+	</script>
+
+</html>

@@ -1,0 +1,104 @@
+{
+	"home.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"subpage-inp.html",
+			"js/mui.js"
+		],
+		"refer": [
+			"subpage-user.html",
+			"subpage-inp.html",
+			"subpage-secu.html"
+		]
+	},
+	"index.html": {
+		"resources": [
+			"js/mui.min.js"
+		],
+		"refer": [
+			"welcome.html"
+		]
+	},
+	"login.html": {
+		"resources": [
+			"img/login_reg_bg.jpg",
+			"js/login.js",
+			"js/md5.js"
+		],
+		"refer": [
+			"reg_phone.html"
+		]
+	},
+	"subpage-user.html": {
+		"resources": [
+			"img/icon/iconfont-wodeshoucang.png",
+			"css/subpage.user.css",
+			"img/icon/iconfont-wodetouzi.png",
+			"img/icon/iconfont-zhanghuyue.png",
+			"img/icon/iconfont-wodezhangdan.png",
+			"img/icon/iconfont-xitongxiaoxi.png",
+			"img/icon/iconfont-zhanghaoyuanquan.png",
+			"img/icon/mine_photo_default.png",
+			"img/icon/mine_title_bg.jpg",
+			"js/subpage.user.js",
+			"img/icon/iconfont-tuichudenglu.png"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"subpage-inp.html": {
+		"resources": [
+			"img/icon/icon_incomeing.png",
+			"css/hami.css",
+			"img/icon/iconfont-zizhanghuyuan (1).png",
+			"img/banner_img02.jpg",
+			"img/banner_img01.jpg",
+			"js/subpage.inp.js",
+			"img/icon/icon_rapublish.png"
+		],
+		"refer": [
+			"ui/inp_qa.html"
+		]
+	},
+	"subpage-secu.html": {
+		"resources": [
+			"js/mui.pullToRefresh.js",
+			"js/echarts-all.js",
+			"js/subpage.secu.js",
+			"js/mui.pullToRefresh.material.js",
+			"css/subpage.secu.css"
+		]
+	},
+	"welcome.html": {
+		"resources": [
+			"img/welcome/3.jpg",
+			"img/welcome/1.jpg",
+			"img/icon/iconfont-gengxin.png",
+			"css/mui.css",
+			"img/welcome/2.jpg"
+		],
+		"refer": [
+			"home.html"
+		]
+	},
+	"reg_phone.html": {
+		"refer": [
+			"reg_detail.html"
+		]
+	},
+	"reg_detail.html": {
+		"resources": [
+			"js/reg_detail.js"
+		],
+		"refer": [
+			"ui/user_headimg.html"
+		]
+	},
+	"ui/user_headimg.html": {
+		"resources": [
+			"ui/js/user.head.img.js",
+			"img/temp.gif"
+		]
+	}
+}

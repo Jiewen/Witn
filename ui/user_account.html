@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/hami.css" />
+		<style>
+			body {
+				background: #FAFAFA !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="user_account_back"></a>
+			<h1 class="mui-title">我的账单</h1>
+		</header>
+
+	</body>
+	<script src="../js/mui.js"></script>
+	<script type="text/javascript">
+		var user_account_back = document.getElementById("user_account_back");
+		mui.init({
+			subpages: [{
+				url: 'user_account_list.html',
+				id: 'user_account_list',
+				styles: {
+					top: '44px',
+					bottom: '0px'
+				}
+			}]
+		});
+		user_account_back.addEventListener("tap",function(){
+			mui.back();
+		});
+		mui.back = function() {
+			//显示上一个界面；
+			mui.currentWebview.hide("pop-out");
+		}
+	</script>
+
+</html>
