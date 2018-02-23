@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Invest Pool</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.css">
+		<link rel="stylesheet" href="css/hami.css" />
+		<style>
+			.inp-option-block {
+				width: 100%;
+				height: auto;
+				margin-top: 1px;
+				text-align: left;
+			}
+			.inp-option-block ul img {
+				width: 40%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-icon mui-icon-info mui-pull-right" id="inp_qa"></a>
+			<h1 class="mui-title">投资池</h1>
+		</header>
+
+		<div class="mui-scroll-wrapper" style="height: calc(100% - 44px);margin-top: 44px;">
+			<div class="mui-scroll">
+				<div id="slider" class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<div class="mui-slider-item">
+							<a href="#"><img src="img/banner_img02.jpg"></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="img/banner_img01.jpg"></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="img/banner_img02.jpg"></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="img/banner_img01.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="inp-content">
+					<div class="inp-option-block">
+						<ul class="mui-table-view mui-grid-view mui-grid-9" style="padding: 0px;">
+							<li id="collecting" class="mui-table-view-cell mui-media mui-col-xs-4">
+								<a>
+									<img src="img/icon/iconfont-zizhanghuyuan (1).png" />
+									<div class="mui-media-body">正在集资</div>
+								</a>
+							</li>
+							<li id="publishing" class="mui-table-view-cell mui-media mui-col-xs-4">
+								<a>
+									<img src="img/icon/icon_rapublish.png" />
+									<div class="mui-media-body">即将揭晓</div>
+								</a>
+							</li>
+							<li id="earnings" class="mui-table-view-cell mui-media mui-col-xs-4">
+								<a>
+									<img src="img/icon/icon_incomeing.png" />
+									<div class="mui-media-body">正在收益</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="hami-view" id="inp_trecommend">
+						<h4>今日推荐</h4>
+						<div class='hami-nothing'>
+							<font>正在获取中...</font>
+						</div>
+					</div>
+
+					<div class="hami-view" id="inp_information">
+						<h4>今日资讯</h4>
+						<div class="hami-nothing">
+							<font>正在获取中...</font>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+	<script src="js/mui.js"></script>
+	<script src="js/subpage.inp.js"></script>
+	<script>
+	</script>
+
+</html>

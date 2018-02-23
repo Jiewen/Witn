@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>正在集资</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/hami.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+	</head>
+
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll collectDetail">
+				<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+					<!--<li class="mui-table-view-cell">
+			            <div class="mui-table">
+			                <div class="mui-table-cell mui-col-xs-10">
+			                	<img class="mui-media-object mui-pull-left" src="../img/icon/mine_photo_default.png">
+			                    <h5 class="mui-ellipsis">昵称：罗攀</h5>
+			                    <h5>投资：100000</h5>
+			                </div>
+			                <div class="mui-table-cell mui-col-xs-2 mui-text-right">
+			                    <span class="mui-h5">15:25</span>
+			                </div>
+			            </div>
+			        </li>-->
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.js"></script>
+	<script>
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},
+				up: {
+					callback: pullupRefresh
+				}
+			}
+		});
+		var collcedInfo;
+		window.onload = function() {
+				mui.plusReady(function() {
+					var proid = plus.storage.getItem('currentUUID');
+					plus.storage.removeItem('currentUUID');
+					console.log(proid);
+					if (proid == null) {
+						alert('无数据');
+						return;
+					}
+					var sendInfo = "uuid:" + proid;
+					plus.nativeUI.closeWaiting();
+					console.log(sendInfo);
+					mui.ajax(witnUrl + 'colProductAction_investmentInfo.action', {
+						data: {
+							sendInfo: sendInfo
+						},
+						dataType: 'json',
+						type: 'post',
+						timeout: 10000,
+						success: function(data) {
+							if (data != null) {
+								collcedInfo = data;
+								mui.currentWebview.show();
+								plus.webview.getWebviewById('inp_collected').show();
+								plus.nativeUI.closeWaiting();
+							} else {
+								plus.nativeUI.closeWaiting();
+								mui.currentWebview.show();
+								plus.nativeUI.toast("无数据", {
+									duration: "1000"
+								});
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							plus.nativeUI.closeWaiting();
+							plus.nativeUI.toast("网络异常，请检查您的网络连接", {
+								duration: "1000"
+							});
+						}
+					});
+				});
+			}
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+		var count = 0;
+		function pulldownRefresh() {
+			setTimeout(function() {
+//				if(count>=1){
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+//					return;
+//				}
+//				var table = document.body.querySelector('.mui-table-view');
+//				var cells = document.body.querySelectorAll('.mui-table-view-cell');
+//				mui.each(collcedInfo, function(i, item) {
+//					count++;
+//					var li = document.createElement('li');
+//					li.className = 'mui-table-view-cell';
+//					li.innerHTML = '<div class="mui-table">' + '<div class="mui-table-cell mui-col-xs-10">' +
+//						'<img class="mui-media-object mui-pull-left" src="../img/icon/mine_photo_default.png">' +
+//						'<h5 class="mui-ellipsis">昵称：' + item.vc_nickname + '</h5>' +
+//						'<h5>投资：' + item.l_trade_money + '</h5>'+
+//						'<h5 style="margin-left:51px">序列号：'+ item.vc_sequence + '</h5>' +
+//						'<h5 style="margin-left:51px;float:right">'+ item.d_trade_time + '</h5></div></div>';
+//					//下拉刷新，新纪录插到最前面；
+//					table.insertBefore(li, table.firstChild);
+//				});
+			}, 1500);
+		}
+		/**
+		 * 上拉加载具体业务实现
+		 */
+		function pullupRefresh() {
+			setTimeout(function() {
+//				if(count>=1){
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(); //refresh completed
+//					return;
+//				}
+				var table = document.body.querySelector('.mui-table-view');
+				var cells = document.body.querySelectorAll('.mui-table-view-cell');
+				if(collcedInfo!=null){
+					mui.each(collcedInfo, function(i, item) {
+					count++;
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell';
+					li.innerHTML = '<div class="mui-table">' + '<div class="mui-table-cell mui-col-xs-10">' +
+						'<img class="mui-media-object mui-pull-left" src="../img/icon/mine_photo_default.png">' +
+						'<h5 class="mui-ellipsis">昵称：' + item.vc_nickname + '</h5>' +
+						'<h5>投资：' + item.l_trade_money + '</h5>' +
+						'<h5 style="margin-left:51px">序列号：'+ item.vc_sequence + '</h5>' +
+						'<h5 style="margin-left:51px;float:right">'+ item.d_trade_time + '</h5></div></div>';
+					table.appendChild(li);
+				});
+				}
+				collcedInfo=null;
+			}, 800);
+		}
+		if (mui.os.plus) {
+			mui.plusReady(function() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				}, 800);
+			});
+		} else {
+			mui.ready(function() {
+				mui('#pullrefresh').pullRefresh().pullupLoading();
+			});
+		}
+	</script>
+
+</html>

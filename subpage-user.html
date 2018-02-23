@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>User</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.css">
+		<link rel="stylesheet" href="css/hami.css" />
+		<link rel="stylesheet" href="css/subpage.user.css" />
+
+		<style>
+			.mui-table-view-cell img {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				padding: 0px;
+				margin-top: 3px;
+				border-radius: 5px;
+			}
+			.mui-table-view-cell font {
+				position: absolute;
+				color: #666;
+				font-size: 16px;
+				margin-top: 5px;
+				margin-left: 15px
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<h1 class="mui-title">个人中心</h1>
+			<a class="mui-icon mui-icon-gear mui-pull-right" id="user_seting"></a>
+		</header>
+		<div class="user-head-view" style="position: fixed;">
+			<img style="vertical-align: middle;" src="img/icon/mine_photo_default.png" id="user_headimg" />
+			<div class="user-base-info">
+				<font id="user_name">请登录</font>
+				<font id="user_psign"></font>
+			</div>
+		</div>
+
+		<div class="mui-scroll-wrapper" style="margin-top:244px;height: calc(100% - 244px);">
+			<div class="mui-scroll" id="user_subpage_path">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell" data-href="ui/user_system_news.html">
+						<a class="mui-navigate-right" id="user_system_message">
+							<img src="img/icon/iconfont-xitongxiaoxi.png" />
+							<font>系统消息</font>
+						</a>
+					</li>
+					<!--
+                    	作者：18273446017@163.com
+                    	时间：2015-11-13
+                    	描述：由于服务器原因  我的好友聊天模块暂时不提供
+                    	补充：下个版本如果有需求再发布
+                   -->
+					<!--<li class="mui-table-view-cell" data-href="ui/user_friend.html">
+						<a class="mui-navigate-right" id="user_my_message">
+							<img src="img/icon/iconfont-haoyou.png" />
+							<font>我的好友</font>
+							<span class="mui-badge mui-badge-red">2</span>
+						</a>
+					</li>-->
+					<li class="mui-table-view-cell" data-href="ui/user_account.html">
+						<a class="mui-navigate-right">
+							<img src="img/icon/iconfont-wodezhangdan.png" />
+							<font>我的账单</font>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" data-href="ui/user_myinp.html">
+						<a class="mui-navigate-right">
+							<img src="img/icon/iconfont-wodetouzi.png" />
+							<font>我的投资</font>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" data-href="ui/user_my_collection.html">
+						<a class="mui-navigate-right">
+							<img src="img/icon/iconfont-wodeshoucang.png" />
+							<font>我的收藏</font>
+						</a>
+					</li>
+				</ul>
+
+				<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+					<li class="mui-table-view-cell" data-href="ui/user_hami_money.html">
+						<a class="mui-navigate-right" id="user_my_money">
+							<img src="img/icon/iconfont-zhanghuyue.png" />
+							<font>我的哈密币</font>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" data-href="ui/user_as.html">
+						<a class="mui-navigate-right">
+							<img src="img/icon/iconfont-zhanghaoyuanquan.png" />
+							<font>账号与安全</font>
+						</a>
+					</li>
+				</ul>
+
+				<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+
+					<li class="mui-table-view-cell" data-href="ui/user_exit">
+						<a class="mui-navigate">
+							<img src="img/icon/iconfont-tuichudenglu.png" />
+							<font>退出登录</font>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/mui.js"></script>
+	<script type="text/javascript" src="js/subpage.user.js"></script>
+
+</html>

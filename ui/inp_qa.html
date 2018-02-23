@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/hami.css" />
+		<style>
+			.hami-alert-mark p{
+				font-style: oblique;
+				font-weight: bold;
+				color:rgba(0,0,0,.8);
+			}
+			.hami-alert-mark-normal  p{
+				color:rgba(0,0,0,.6);
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">Q&A</h1>
+		</header>
+
+		<div class="mui-scroll-wrapper" style="margin-top: 44px; height: calc(100% - 44px);">
+			<div class="mui-scroll">
+				<div class="hami-alert-mark">
+					<p class="hami-font-indent">Q1:产品的主要功能有哪些？</p>
+				</div>
+				<div class="hami-alert-mark-normal">
+					<p class="hami-font-indent">A1:其实产品可以用三句话来说明：低投入，高回报，分散风险。我们所有的功能都是针对 这三句话来设计的，其中最核心的是投资池和投票环节，用户可以选择性的购买投资池，而投票环节用户又可以 告诉产品应该出现投资池，基本上都是由用户自己来决定的。
+					</p>
+				</div>
+				<div class="hami-alert-mark">
+					<p class="hami-font-indent">Q2:用户是如何实现低投入，高回报，分散风险的？</p>
+				</div>
+				<div class="hami-alert-mark-normal">
+					<p class="hami-font-indent">A2:产品发布投资池后，用户可以最低投资一元到这个投资池，他就会有机会在该投资池集资结束之后获得这个投资池在未来的一段时间内所有的收益。 收益结束后再将本金退还给其它投资者的账户。如果亏损的话所有投资者按比例承担一定的风险。从而达到低投入、低风险、高回报的投资目标。
+					</p>
+				</div>
+
+				<div class="hami-alert-mark">
+					<p class="hami-font-indent">Q3:和彩票有什么区别？</p>
+				</div>
+				<div class="hami-alert-mark-normal">
+					<p class="hami-font-indent">A3:确实，相信大部分的人都购买过彩票，彩票是一种你购买了没中奖，那么恭喜你，你的本钱也没有了。还有的人会问，和一元云购有什么区别， 其实和彩票的区别是一样的，当你没有中奖的时候，你的本钱就没有了。而微投不一样，假设你没有成为幸运儿，只不过是把你的本钱暂时借给幸运儿用一下，到了规定的时间 本钱还是会还给你的。
+					</p>
+				</div>
+
+				<div class="hami-alert-mark">
+					<p class="hami-font-indent">Q4:为什么会出现平台推荐功能？</p>
+				</div>
+				<div class="hami-alert-mark-normal">
+					<p class="hami-font-indent">A4:如果集资过快，而投票结果中排名第一的得票数又没有到达可以发布投资池的限额，这样的话 就会从平台推荐系统觉得在未来收益几率最大的理财产品中发布为新的投资池，当然这个平台推荐每天都会更新的
+					</p>
+				</div>
+
+				<div class="hami-alert-mark">
+					<p class="hami-font-indent">Q5:投资额度为什么是9999，以后可不可以分多个额度的投资池？</p>
+				</div>
+				<div class="hami-alert-mark-normal">
+					<p class="hami-font-indent">A5:为什么是9999，而不是一个整数10000这个和平台选取幸运儿的算法有关。 在未来平台会区分额度的，比如说99999,999999等，还会加入基金为理财产品
+					</p>
+				</div>
+
+				<div class="hami-alert-mark">
+					<p class="hami-font-indent">Q6:平台是如何选取幸运儿的，会不会有暗箱操作？</p>
+				</div>
+				<div class="hami-alert-mark-normal">
+					<p class="hami-font-indent">A6:我们郑重承诺，绝不会存在所谓的暗箱操作。用户在投资的时候，以一元为单位， 也就是说你每投入一块钱，你就会获得一个四位数的序列号。最后当这个投资池集资完成之后，所有的投资用户所拥有的序列号刚刚好是0-9999的全部数字，然后用户会根据该投资产品所在大盘的当时价格最后两位数+该投资产品的当前价格后两位得到幸运序列号。
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="../js/mui.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		});
+	</script>
+
+</html>

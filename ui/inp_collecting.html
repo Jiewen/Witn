@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+	<head>
+		<meta charset="utf-8">
+		<title>正在集资</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.css">
+		<link rel="stylesheet" href="../css/hami.css" />
+		<style>
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-off-canvas-right {
+				color: #fff;
+			}
+			.title {
+				margin: 35px 15px 10px;
+			}
+			.title+.content {
+				margin: 10px 15px 35px;
+				color: #bbb;
+				text-indent: 1em;
+				font-size: 14px;
+				line-height: 24px;
+			}
+			.mui-navigate {
+				text-align: center !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--整体容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+			<!--
+            	作者：18273446017@163.com
+            	时间：2015-11-03
+            	描述：菜单区域
+            -->
+			<aside id="offCanvasSide" class="mui-off-canvas-right">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper" style="height: 100%;">
+					<div class="mui-scroll">
+						<div class="title" style="margin-bottom: 25px;font-size: 20px;">选择投资产品</div>
+						<ul id="fresh-side" class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+							<li id="btn_more" class="mui-table-view-cell">
+								<a class="mui-navigate" style="color: #C0C0C0;">
+									加载更多
+								</a>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</aside>
+
+			<!--
+            	作者：18273446017@163.com
+            	时间：2015-11-03
+            	描述：内容区域
+            -->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav hami-head">
+					<a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></a>
+					<h1 id="hami-product" class="mui-title">正在集资</h1><h1 style="display: none;" id="hami-prouuid" class="mui-title">正在集资</h1>
+				</header>
+
+				<div id="offCanvasContentScroll" class="mui-scroll-wrapper" style="background: #FFF;margin-top: 44px;height: calc(100% - 94px);">
+					<div class="mui-scroll">
+						<div class="hami-updown">
+							<div class="chart-raising" id="KChart"></div>
+						</div>
+						<div id="opendeail" class="pool_container">
+							<canvas id="pool" data-progress="0"></canvas>
+							<font id="pool_rate" class="pool_rate">0%</font>
+							<div class="poll_raising" style="float: right;margin-top:30px;margin-right: 20px;">
+								<p class="hami-down">需集资</p>
+								<p id="needColc" class="hami-down">0元</p>
+								<p class="hami-up" style="margin-top:20px;">已集资</p>
+								<p id="havedColc" class="hami-up">0元</p>
+							</div>
+						</div>
+						<div class="chart" id="CChart"></div>
+					</div>
+
+				</div>
+				<div class="mui-off-canvas-backdrop"></div>
+				<nav class="mui-bar mui-bar-tab">
+					<a id="secu_vote_detail" class="mui-btn mui-btn-primary" style="float: left;left: 20px;padding-left: 20px;padding-right: 20px;">详情</a>
+					<a href="#buy" class="mui-btn mui-btn-negative" style="float: right;right: 20px;padding-left: 20px;padding-right: 20px;">购买</a>
+				</nav>
+			</div>
+		</div>
+		<!--
+        	作者：1038512841@qq.com
+        	时间：2015-11-03
+        	描述：弹出选择投资数量
+        -->
+		<div id="buy" class="mui-popover mui-popover-action mui-popover-bottom">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="mui-numbox">
+						<button id="box_cut" class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+						<input id="box" class="mui-numbox-input" type="number" />
+						<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+					</div>
+					<button id="btn" class="mui-btn" style="padding: 7px 12px;">确定</button>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li id="pay" class="mui-table-view-cell">
+					<a href="#buy"><b>取消</b></a>
+				</li>
+			</ul>
+		</div>
+		<!--
+        	作者：1038512841@qq.com
+        	时间：2015-11-02
+        	描述：弹出支付界面
+        -->
+		<div id="hami-pay" class="mui-popover hami-popover">
+			<ul class="mui-table-view hami-pay">
+				<li class="mui-table-view-cell"><a href="#buy" style="float: left;display: inline;" class="mui-icon mui-icon-closeempty"></a><h4>付款详情</h4></li>
+				<li class="mui-table-view-cell"><h5>账户</h5><h5>18258441161</h5></li>
+				<li class="mui-table-view-cell"><h5>付款方式</h5><h5>账户余额</h5></li>
+				<li id="money" class="mui-table-view-cell"></li>
+				<li id="pay-finish"><a href="#hami-pay" class="mui-btn-primary mui-btn mui-btn-block">确认支付</a></li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.js"></script>
+	<script type="text/javascript" src="../js/echarts-all.js"></script>
+	<script type="text/javascript" src="../js/pool.js"></script>
+	<script type="text/javascript" src="js/inp.collecting.js"></script>
+
+</html>

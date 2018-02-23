@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/hami.css" />
+		<style>
+			/*修改  上下两边padding不一致的样式*/
+			.mui-table-view-cell {
+				padding: 2px 15px 2px 15px !important;
+				align-items: center;
+				display: flex;
+				color: #666;
+			}
+			.mui-table-view-cell font {
+				position: relative !important;
+				display: inline-block;
+				color: #666;
+				padding: 8px 0px;
+			}
+			.mui-table-view-cell font:nth-child(1) {
+				width: 35%;
+				text-align: left;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.mui-table-view-cell font:nth-child(2) {
+				width: 65%;
+				text-align: left;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.mui-table-view-cell input {
+				display: inline-block;
+				margin: 0px;
+				height: auto;
+				padding: 10px 0px;
+				border: none;
+				width: 65%;
+			}
+			.mui-table-view-cell img {
+				width: 60px;
+				height: 60px;
+				margin: 5px;
+				border-radius: 30px;
+				margin-left: calc(60% - 50px);
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">详细信息</h1>
+		</header>
+
+		<div class="mui-scroll-wrapper" style="margin-top: 44px;height: calc(100% - 44px);">
+			<div class="mui-scroll">
+				<div class="hami-alert-mark" style="color: #D55E40;text-align: center;font-size: 12px;">
+					注册成功，密码为123456，您可在本界面进行修改
+				</div>
+				<div class="hami-alert-mark">
+					头像上传
+				</div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" id="reg_detail_headimg">
+						<font>头像</font>
+						<img src="img/icon/mine_photo_default.png" id="reg_headimg" style="float: right;" />
+					</li>
+				</ul>
+				<form id="reg_detail" onsubmit="return reg_confirm()" method="post">
+					<div class="hami-alert-mark">
+						账户信息
+					</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<font>昵称</font>
+							<input type="text" name="nickname" value="" placeholder="请输入昵称">
+						</li>
+						<li class="mui-table-view-cell">
+							<font>手机号码</font>
+							<input type="text" value="" name="phone" id="reg_detail_phone" readonly="readonly">
+						</li>
+						<li class="mui-table-view-cell">
+							<font>邮箱地址</font>
+							<input type="text" value="" name="email" id="reg_detail_email" placeholder="请输入邮箱地址" pattern="^[A-Za-z0-9]+([-_.][A-Za-z0-9]+)*@([A-Za-z0-9]+[-.])+[A-Za-z0-9]{2,5}$">
+						</li>
+						<li class="mui-table-view-cell">
+							<font>个性签名</font>
+							<input type="text" value="" name="psign" placeholder="介绍一下自己吧...">
+						</li>
+					</ul>
+					<div class="hami-alert-mark">
+						基本信息
+					</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<font>性别</font>
+							<input type="text" value="男" name="sex" readonly="readonly" id="reg_detail_sex" >
+						</li>
+						<li class="mui-table-view-cell">
+							<font>身份证号码</font>
+							<input type="text" value="" name="idcard" id="reg_detail_idcard" pattern="^[\d]{6}(19|20)[\d]{2}((0[1-9])|(11|12))([012][\d]|(30|31))[\d]{3}[xX\d]$" placeholder="请输入你的身份证号码">
+						</li>
+					</ul>
+					<div class="hami-alert-mark">
+						密码保护
+					</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<font>登录密码</font>
+							<input type="password" value="" name="password" id="reg_detail_password" placeholder="请输入你的密码">
+						</li>
+						<li class="mui-table-view-cell">
+							<font>确认密码</font>
+							<input type="password" value="" name="repassword" id="reg_detail_repassword" placeholder="请再一次输入密码">
+						</li>
+					</ul>
+					<button type="submit" class="mui-btn mui-btn-blue" style="width: 90%;margin-left: 5%;margin-top:10px; padding: 10px 0px;">完成</button>
+				</form>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/md5.js" ></script>
+	<script src="js/mui.js"></script>
+	<script type="text/javascript" src="js/reg_detail.js" ></script>
+</html>

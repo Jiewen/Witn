@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/hami.css" />
+
+		<style>
+			html {
+				height: 100%;
+			}
+			body {
+				height: 100%;
+			}
+			.bigdiv {
+				float: left;
+				width: 100%;
+				height: 100%;
+				/*background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#ADE7EF), to(#E7D8C5));/*谷歌*/
+				background-image: url(img/login_reg_bg.jpg);
+				box-shadow: 0 0 1000px 1000px rgba(0,0,0,0.4) inset;
+				background-size: cover;
+				background-repeat: no-repeat;
+				/*background-color: #FFF;*/
+				align-items: center;
+				display: flex;
+			}
+			.login-center {
+				margin-top:100px;
+				width: 100%;
+				height: auto;
+			}
+			.login-input {
+				float: left;
+				margin-top: -42px;
+				margin-left: 40px;
+				font-size: 16px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">手机验证</h1>
+		</header>
+		<div class="bigdiv">
+			<div class="mui-content login-center" style="background: none;">
+
+				<form class="mui-input-group" id="reg_form_phone" style="background: rgba(255,255,255,.6);">
+					<div class="mui-input-row">
+						<span class="mui-icon mui-icon-phone mui-content-padded"></span>
+						<input type="text" id="reg_input_phone" name="phone" class="login-input" placeholder="请输入手机号" value="">
+					</div>
+				</form>
+				<div style="margin-top:20px;text-align: center;">
+					<button class="mui-btn mui-btn-yellow" style="width: 80%; padding: 10px 0px;" id="reg_btn_sendcord">发送验证码</button>
+				</div>
+
+				<form class="mui-input-group" style="background: rgba(255,255,255,.6); margin-top:20px;">
+					<div class="mui-input-row">
+						<span class="mui-icon mui-icon-flag mui-content-padded"></span>
+						<input type="text" class="login-input" id="reg_input_cord" placeholder="请输入验证码">
+					</div>
+				</form>
+				<div style="margin-top:20px;text-align: center;">
+					<button class="mui-btn mui-btn-primary" style="width: 80%; padding: 10px 0px;" id="reg_ben_nextstep">下一步</button>
+				</div>
+			</div>
+		</div>
+
+		<body>
+			<script type="text/javascript" src="js/mui.js"></script>
+			<script>
+				mui.init();
+				
+				var reg_btn_sendcord = document.getElementById('reg_btn_sendcord');
+				var reg_ben_nextstep = document.getElementById('reg_ben_nextstep');
+				var reg_input_phone = document.getElementById('reg_input_phone');
+				var reg_input_cord = document.getElementById('reg_input_cord');
+				var count_down = 60; //倒计时
+				var count_downInterval; //倒计时的Interval
+				var phone_is_exist = true; //注册的手机号是否已经存在
+				var countdown = function() {
+					if (count_down == 0) {
+						replaySendBtnCord();
+					} else {
+						count_down--;
+						reg_btn_sendcord.innerText = "（" + count_down + "）秒后重新发送"
+					}
+				}
+				reg_btn_sendcord.addEventListener('tap', function() {
+					reg_input_phone.blur();
+					var phone = reg_input_phone.value;
+					var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+					if (!reg.test(phone)) {
+						mui.toast('号码有误，请重新输入');
+						return;
+					}
+					reg_btn_sendcord.disabled = true;
+					reg_btn_sendcord.innerText = "（" + count_down + "）秒后重新发送";
+					count_downInterval = setInterval("countdown()", 1000);
+					var sendInfo = gainFormValue("reg_form_phone", "no");
+					//验证格式该手机号码是否已经存在
+					mui.ajax(witnUrl + 'loginAction_registered.action', {
+						data: {
+							sendInfo: sendInfo
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						success: function(data) {
+							if (data.result == 'pass') {
+								reg_input_cord.value = '12345';
+							} else {
+								mui.toast('该号码已被注册');
+								replaySendBtnCord();
+								reg_input_phone.value = "";
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.toast(errorThrown);
+						}
+					});
+				});
+				reg_ben_nextstep.addEventListener('tap', function() {
+					var cord_text = reg_input_cord.value;
+					var phone = reg_input_phone.value;
+					if (cord_text == "") {
+						mui.toast('验证码错误！');
+					} else {
+						mui.openWindow({
+							url: 'reg_detail.html',
+							id: 'reg_detail',
+							createNew: false, //是否创建具有同样ID的页面
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								aniShow: 'pop-in', //页面显示动画，默认为”slide-in-right“；
+								duration: 300
+							},
+							extras: {
+								phone:phone
+							},
+							waiting: {
+								autoShow: false //自动显示等待框，默认为true
+							}
+						})
+					}
+				});
+
+				function replaySendBtnCord() {
+					count_down = 60;
+					reg_btn_sendcord.innerText = "重新发送";
+					reg_btn_sendcord.disabled = false;
+					clearInterval(count_downInterval);
+				}
+			</script>
+
+</html>

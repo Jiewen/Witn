@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>正在集资</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/hami.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+	</head>
+
+	<body>
+		<header class="hami-head mui-bar">
+			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+			<h1 id="hami-product" class="mui-title">即将揭晓</h1>
+		</header>
+		<div id="pullrefresh" class="mui-scroll-wrapper">
+			<div class="mui-scroll hami-view-l">
+				<div id="countdown" class="hami-updown publishing-box">
+					<h4>正在揭晓：中国证券</h4>
+					<h3 class="hami-publishing-num">揭晓倒计时：<a>10</a></h3>
+				</div>
+				<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+					<!--<li id="bepublish" class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="../img/mine_photo_default.png">
+							<div class="mui-media-body">
+								<div class="mui-table">
+									<div class="mui-table-cell mui-col-xs-8">
+										<h4 id="produname" class="mui-ellipsis">恒生电子</h4>
+										<h5>已融资：1000</h5>
+									</div>
+									<div id="countdowning" class="mui-table-cell mui-col-xs-4 mui-text-right">
+										<span class="mui-h4">2分60秒</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</li>-->
+				</ul>
+			</div>
+
+		</div>
+	</body>
+	<script src="../js/mui.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true, //启用右滑关闭功能
+			pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh,
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+			}
+		});
+		var conut;
+		/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = cells.length, len = i + 3; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = '<div class="mui-table">'+'<div class="mui-table-cell mui-col-xs-8">'+
+						'<img class="mui-media-object mui-pull-left" src="../img/mine_photo_default.png">'+
+						'<h4 id=produname" class="mui-ellipsis">恒生电子'+i+'</h4>'+
+						'<h5>已融资：12109'+i+'</h5></div>'+
+						'<div class="mui-table-cell mui-col-xs-4 mui-text-right">'+
+			            '<span class="mui-h4">00分00秒</span></div></div>';
+						
+						//下拉刷新，新纪录插到最前面；
+						table.insertBefore(li, table.firstChild);
+					}
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+				}, 800);
+			}
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = cells.length, len = i + 4; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = '<div class="mui-table">'+'<div class="mui-table-cell mui-col-xs-8">'+
+						'<img class="mui-media-object mui-pull-left" src="../img/mine_photo_default.png">'+
+						'<h4 id=produname" class="mui-ellipsis">恒生电子'+i+'</h4>'+
+						'<h5>已融资：12109'+i+'</h5></div>'+
+						'<div class="mui-table-cell mui-col-xs-4 mui-text-right">'+
+			            '<span class="mui-h4">00分00秒</span></div></div>';
+						table.appendChild(li);
+					}
+					conut=mui(".mui-table-view li").length;
+					givetime();//调用计时
+				}, 800);
+			}
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 800);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
+		//===================================================
+		var endtimes=new Array();//结束时间
+		endtimes[0]="11/11/2015 9:04:00";
+		endtimes[1]="11/11/2015 9:04:20";
+		endtimes[2]="11/11/2015 9:15:00";
+		endtimes[3]="11/11/2015 9:05:00";
+		var nowtimes;
+		function givetime(){
+			nowtimes=new Date("11/11/2015 9:03:00");//当前服务器时间
+			window.setTimeout("DownCount()",1000);
+		}
+		function DownCount(){
+			nowtimes=Number(nowtimes)+1000;
+			for(var i=0;i<conut;i++){
+				var theDay=new Date(endtimes[i]);
+				theDay=theDay++;
+				if(theDay<=nowtimes){
+					mui(".mui-table-view li .mui-text-right")[i].innerHTML = "00分00秒";
+				}else{
+					timechange(theDay,i);
+				}
+			}
+			window.setTimeout("DownCount()",1000)
+		}
+		function timechange(theDay,i){
+			var theDays=new Date(theDay);
+			var seconds = (theDays - nowtimes)/1000;
+			var minutes = Math.floor(seconds/60);
+			var hours = Math.floor(minutes/60);
+			var days = Math.floor(hours/24);
+			var CDay= days;
+			var CHour= hours % 24;
+			var CMinute= minutes % 60;
+			var CSecond= seconds % 60;
+			var CHour=CHour+CDay*24;
+			if(CMinute<10){
+				CMinute="0"+CMinute;
+			}
+			if(CHour<10){
+				CHour="0"+CHour;
+			}
+			if(CSecond<10){
+				CSecond="0"+CSecond;
+			}
+			mui(".mui-table-view li .mui-text-right")[i].innerHTML ="<span class='mui-h4'>"+CMinute+"分"+CSecond+"秒\</span>";
+		}
+//=========================其他计时=================
+		function Marqueeing(a) {
+			var timeout;
+			var timer;
+			var i = 10;
+			var j =2;
+		    var produname=mui("#produname")[0].innerHTML;
+			timer = setInterval(function() {
+				mui(".mui-text-right")[a].innerHTML="<span class='mui-h4'>"+j+"分"+(i--)+"秒\</span>";
+				if (i == -1) {
+					j--;
+					i=10;
+					if(j==-1){
+						mui(".mui-table-view li")[a].remove();
+						mui("#countdown h4")[0].innerHTML="正在揭晓："+produname;
+						clearInterval(timer);
+						timer.START_AFTER;
+						Marquee(produname);
+					}
+				}
+			}, 1000);
+		};
+		var a=3;
+		if(a>0){
+			mui(".mui-table-view li").each(function () {
+		 		a--;
+//		 		Marqueeing(a);
+			});
+		}
+		
+		function Marquee(prodname) {
+			var timeout;
+			var timer;
+			var i = 10;
+			timer = setInterval(function() {
+				mui("#countdown a")[0].innerHTML = i--;
+				if (i == -1) {
+					mui("#countdown h3")[0].innerHTML = prodname+"的幸运者为:<p4>&nbsp;&nbsp;131821</p4>";
+					clearInterval(timer);
+				}
+			}, 1000);
+		};
+	</script>
+
+</html>

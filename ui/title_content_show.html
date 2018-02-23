@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/hami.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">资讯详情</h1>
+		</header>
+
+		<div class="mui-scroll-wrapper" style="margin-top:44px;height: calc(100% - 44px);">
+			<div class="mui-scroll" id="title_content_show">
+
+			</div>
+		</div>
+
+	</body>
+	<script src="../js/mui.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		});
+		if (window.plus) {
+			plusReady();
+		} else {
+			document.addEventListener("plusready", plusReady, false);
+		}
+		var sendData;
+		var title_content_show = document.getElementById("title_content_show");
+
+		function plusReady() {
+			var self = plus.webview.currentWebview();
+			sendData = self.sendData;
+			changeHtml();
+		}
+
+		function changeHtml() {
+			var labelData = sendData.VC_LABEL;
+			var strs = new Array(); //定义一数组 
+			strs = labelData.split("，"); //字符分割 
+			var labelHtml = "";
+			for (i = 0; i < strs.length; i++) {
+				labelHtml += "<label>" + strs[i] + "</label>";
+			}
+			var title_content_showInnerHtml = "<div class='hami-alert-mark'>" +
+				"<font class='hami-page-title'>" + sendData.VC_TITLE + "</font></div><div class='hami-page-label'>" +
+				"相关标签：" + labelHtml + "</div><div class='hami-page-other-info'>" +
+				"<label class='hami-page-from'>来源：" + sendData.VC_FROM + "</label>" +
+				"<label class='hami-page-time'>发布时间：" + sendData.VC_TIME + "</label>" +
+				"</div><div class='hami-page-img'><img src='" + witnUrl + "../" + sendData.VC_TITLEIMG + "' /></div>" +
+				"<div class='hami-page-content'><p>" + sendData.VC_CONTENT + "</p></div>";
+			
+			title_content_show.innerHTML = title_content_showInnerHtml;
+		}
+	</script>
+
+</html>

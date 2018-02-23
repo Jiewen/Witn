@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>即将揭晓</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/hami.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 0px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				overflow: hidden;
+				border: 1px solid #DE1922;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<!--<li class="mui-table-view-cell">
+										<div class="mui-table">
+											<div class="mui-table-cell mui-col-xs-8">
+												<img class="mui-media-object mui-pull-left" src="../img/icon/mine_photo_default.png">
+												<h4 id="produname" class="mui-ellipsis">恒生电子</h4>
+												<h5>已融资：12109</h5></div>
+											<div class="mui-table-cell mui-col-xs-4 mui-text-right">
+												<span class="mui-h4">00分00秒</span></div>
+										</div>
+									</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/mui.js"></script>
+		<script src="../js/mui.pullToRefresh.js"></script>
+		<script src="../js/mui.pullToRefresh.material.js"></script>
+		<script>
+			mui.init();
+			//TODO
+			var publishInfo;
+			window.onload = function() {
+				mui.plusReady(function() {
+					mui.ajax(witnUrl + 'colProductAction_revealed.action', {
+						data: {
+							sendInfo: 'sendInfo'
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						success: function(data) {
+							if (data.error_code == "0") {
+								plus.nativeUI.closeWaiting();
+								publishInfo = data.result;
+							} else{
+								plus.nativeUI.closeWaiting();
+								mui.toast("无揭晓数据！");
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							plus.nativeUI.closeWaiting();
+							alert("网络异常，请检查您的网络连接");
+						}
+					});
+				});
+			};
+			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios ? 0.003 : 0.0002;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: deceleration
+				});
+				$.ready(function() {
+					var count = 0;
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+							down: {
+								contentrefresh: "正在加载...",
+								contentnomore: '没有更多数据了',
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.insertBefore(createFragment(ul, index, 3, true), ul.firstChild);
+										conut = mui(".mui-table-view li").length;
+										self.endPullDownToRefresh((++count > 2));
+									}, 1000);
+								}
+							},
+							up: {
+								contentrefresh: "正在加载...",
+								contentnomore: '没有更多数据了',
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.appendChild(createFragment(ul, index, 3, true));
+										conut = mui(".mui-table-view li").length;
+										self.endPullUpToRefresh((++count > 2));
+									}, 1000);
+								}
+							}
+						}).pullDownLoading();
+					});
+					var createFragment = function(ul, index, count, reverse) {
+						var length = ul.querySelectorAll('li').length;
+						var fragment = document.createDocumentFragment();
+						var li;
+						if(publishInfo!=null){
+							mui.each(publishInfo, function(i, item) {
+							li = document.createElement('li');
+							li.className = 'mui-table-view-cell';
+							li.innerHTML = '<div class="mui-table">' + '<div class="mui-table-cell mui-col-xs-8">' +
+								'<img class="mui-media-object mui-pull-left" src="../img/icon/mine_photo_default.png">' +
+								'<h4 id=produname" class="mui-ellipsis">' + item.scode + '</h4>' +
+								'<h5>已融资：' + item.limit + '</h5></div>' +
+								'<div class="mui-table-cell mui-col-xs-4 mui-text-right">' +
+								'<h5 class="mui-h4">等待揭晓...</h5></div></div>';
+							fragment.appendChild(li);
+							li.addEventListener('tap', function() {
+								plus.storage.setItem("currentUUID", item.uuid); 
+								mui.openWindow({
+									url: 'inp_collected.html',
+									id: 'inp_collected',
+									show: {
+										autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										aniShow: 'pop-in', //页面显示动画，默认为”slide-in-right“；
+										duration: 300
+									}
+								});
+							});
+						});
+						}
+						publishInfo=null;
+						return fragment;
+					};
+					//					givetime(); //调用计时器
+				});
+			})(mui);
+			//计时器
+			var endtimes = new Array(); //结束时间
+			endtimes[0] = "11/11/2015 9:04:00";
+			endtimes[1] = "11/11/2015 9:04:20";
+			endtimes[2] = "11/11/2015 9:15:00";
+			endtimes[3] = "11/11/2015 9:05:00";
+			endtimes[4] = "11/11/2015 9:04:00";
+			endtimes[5] = "11/11/2015 9:04:20";
+			endtimes[6] = "11/11/2015 9:15:00";
+			endtimes[7] = "11/11/2015 9:05:00";
+			var nowtimes;
+			//时间主函数
+			function givetime() {
+				nowtimes = new Date("11/11/2015 9:03:00"); //当前服务器时间
+				window.setTimeout("DownCount()", 1000);
+			}
+			//为li添加时间
+			function DownCount() {
+				nowtimes = Number(nowtimes) + 1000;
+				for (var i = 0; i < conut; i++) {
+					if (i >= 8) {
+						var theDay = new Date(endtimes[1]);
+					} else {
+						var theDay = new Date(endtimes[i]);
+					}
+					theDay = theDay++;
+					if (theDay <= nowtimes) {
+						mui(".mui-table-view li .mui-text-right")[i].innerHTML = "<h5 class='mui-h4'>等待揭晓...</h5>";
+					} else {
+						timechange(theDay, i);
+					}
+				}
+				window.setTimeout("DownCount()", 1000);
+			}
+			//计算时间
+			function timechange(theDay, i) {
+				var theDays = new Date(theDay);
+				var seconds = (theDays - nowtimes) / 1000;
+				var minutes = Math.floor(seconds / 60);
+				var hours = Math.floor(minutes / 60);
+				var days = Math.floor(hours / 24);
+				var CDay = days;
+				var CHour = hours % 24;
+				var CMinute = minutes % 60;
+				var CSecond = seconds % 60;
+				var CHour = CHour + CDay * 24;
+				if (CMinute < 10) {
+					CMinute = "0" + CMinute;
+				}
+				if (CHour < 10) {
+					CHour = "0" + CHour;
+				}
+				if (CSecond < 10) {
+					CSecond = "0" + CSecond;
+				}
+				mui(".mui-table-view li .mui-text-right")[i].innerHTML = "<span class='mui-h4'>" + CMinute + "分" + CSecond + "秒\</span>";
+			}
+		</script>
+	</body>
+
+</html>

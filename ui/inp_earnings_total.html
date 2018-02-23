@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>累计收益</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/hami.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">累计收益</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper" style="height: calc(100% - 44px);margin-top: 44px;">
+				<div class="mui-scroll">
+					<ul class="mui-table-view hami-earningDetail-ul">
+						<li>
+							<a>最新价(元)</a>
+							<a id="lastpx" style="color: #757575;"></a>
+						</li>
+						<li style="background:#F7F7F7;">
+							<a>日涨跌价(元)</a>
+							<a id="pxchange" style="color: #C7634A;"></a>
+						</li>
+						<li>
+							<a>日涨跌幅</a>
+							<a id="pxrate" style="color: #C7634A;"></a>
+						</li>
+					</ul>
+					<h6 id="updatetime" style="float: right; margin-right: 10px;">更新时间：2015-11-10,13:43</h6>
+					<div class="chart-earning" id="detalchart"></div>
+				</div>
+			</div>
+			<nav class="mui-bar mui-bar-tab">
+				<a id="secu_vote_detail"  class="mui-btn mui-btn-primary" style="float: left;left: 20px;padding-left: 20px;padding-right: 20px;">投票</a>
+				<a href="#buy" id="keep_scoc" class="mui-btn mui-btn-negative" style="float: right;right: 20px;padding-left: 20px;padding-right: 20px;">收藏</a>
+		   </nav>
+		</div>
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript" src="../js/echarts-all.js"></script>
+		<script src="js/inp.earning.total.js"></script>
+	</body>
+
+</html>

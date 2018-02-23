@@ -1,0 +1,136 @@
+<!--
+	作者：18273446017@163.com
+	时间：2015-09-30
+	描述：投票子界面
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/hami.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav hami-head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="secu_vote_title"></h1>
+		</header>
+
+		<div class="hami-loading" id="hami_loading">
+		</div> 
+
+		<div class="mui-scroll-wrapper" id="secu_vote_panel" style="margin-top: 44px; height: calc(100% - 94px);visibility: hidden;">
+			<div class="mui-scroll">
+				<div class="chart" id="KChart"></div>
+				<div class="hami-view">
+					<h4>恒生电子历史投资池情况</h4>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell hami-item-box" onclick="alert(1)">
+							<span>恒生电子<font>集资时间：2015.09.22→2015.09.25</font></span>
+							<table cellspacing="0px" cellpadding="0px">
+								<tr>
+									<th rowspan="2">
+										<img src="../img/icon/mine_photo_default.png" />
+									</th>
+									<td>哈密儿</td>
+									<td>购买人次</td>
+									<td>共集资</td>
+									<td>共收益</td>
+								</tr>
+								<tr class="hami-down">
+									<td>听说名词取的长就不会显示，我来试一试</td>
+									<td>6523</td>
+									<td>9999</td>
+									<td>-1203</td>
+								</tr>
+							</table>
+						</li>
+
+						<li class="mui-table-view-cell hami-item-box">
+							<span>恒生电子<font>集资时间：2015.09.22→2015.09.25</font></span>
+							<table cellspacing="0px" cellpadding="0px">
+								<tr>
+									<th rowspan="2">
+										<img src="../img/icon/mine_photo_default.png" />
+									</th>
+									<td>哈密儿</td>
+									<td>购买人次</td>
+									<td>共集资</td>
+									<td>共收益</td>
+								</tr>
+								<tr class="hami-up">
+									<td>听说名词取的长就不会显示，我来试一试</td>
+									<td>6523</td>
+									<td>9999</td>
+									<td>-1203</td>
+								</tr>
+							</table>
+						</li>
+					</ul>
+				</div>
+
+				<div class="hami-view">
+					<h4>与恒生电子有关的资讯</h4>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-hidden">cared
+							<div id="M_Toggle" class="mui-switch mui-active">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="../img/hslogo.jpg">
+								<div class="mui-media-body">
+									恒生电子校园招聘会开始了
+									<p class='mui-ellipsis'>恒生电子校园招聘会开始了</p>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="../img/hslogo.jpg">
+								<div class="mui-media-body">
+									恒生电子校园招聘会开始了
+									<p class='mui-ellipsis'>恒生电子校园招聘会开始了</p>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="../img/hslogo.jpg">
+								<div class="mui-media-body">
+									恒生电子校园招聘会开始了
+									<p class='mui-ellipsis'>恒生电子校园招聘会开始了</p>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="../img/hslogo.jpg">
+								<div class="mui-media-body">
+									恒生电子校园招聘会开始了
+									<p class='mui-ellipsis'>恒生电子校园招聘会开始了</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<nav class="mui-bar mui-bar-tab">
+			<span id="secu_vote_nownum" style="line-height: 30px;color: #D55E40;display: inline-block;padding: 10px;"></span>
+			<button id="secu_vote_vote" class="mui-btn mui-btn-negative" style="float: right;right: 20px;padding-left: 20px;padding-right: 20px;">投票</button>
+		</nav>
+
+		<script type="text/javascript" src="../js/mui.js"></script>
+		<script type="text/javascript" src="../js/echarts-all.js"></script>
+		<script type="text/javascript" src="js/secu.vote.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>正在收益</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/hami.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 0px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				border: 1px solid #DE1922;
+				background-clip: padding-box;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-slider mui-fullscreen">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="hami-view-l" style="overflow: hidden;">
+									<div id="countdown" class="hami-updown publishing-box">
+										<h5 id="uuids" style="display: none;"></h5>
+										<h5 id="uname" style="display: none;"></h5>
+										<h4>&nbsp;<h5 style="text-align: center; color: #C8C7CC;">昨日收益</h5></h4>
+										<h3 id="lastEarn" class="hami-earning-num">0<a>元</a></h3>
+										<ul class="hami-updown-limit hami-item-box hami-btn-active">
+											<li id="clickDetail">
+												<a id="totalCollec">0元</a>
+												<a>总共集资</a>
+											</li>
+											<li id="haveCollected">
+												<a id="haveEar">0元</a>
+												<a>累计收益</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<ul class="mui-table-view inp-earnings-view">
+									<!--<li class="mui-table-view-cell">
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-yellow iconfont icon-view"></a>
+										</div>
+										<div class="mui-slider-handle hami-item-box" style="border-right:2px solid rgb(240, 173, 78);">
+											<span>恒生电子<font>集资时间：2015.09.22→2015.09.25</font></span>
+											<table cellspacing="0px" cellpadding="0px">
+												<tr>
+													<th rowspan="2">
+														<img src="../img/icon/mine_photo_default.png" />
+													</th>
+													<td>购买人次</td>
+													<td>共集资</td>
+													<td>历史收益</td>
+												</tr>
+												<tr class="hami-up">
+													<td>6523</td>
+													<td>9999</td>
+													<td>-1203</td>
+												</tr>
+											</table>
+										</div>
+									</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/mui.js"></script>
+		<script src="../js/mui.pullToRefresh.js"></script>
+		<script src="../js/mui.pullToRefresh.material.js"></script>
+		<script src="js/inp.earning.js"></script>
+	</body>
+
+</html>
